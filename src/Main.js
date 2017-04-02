@@ -10,16 +10,11 @@ import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import AppBar from './AppBar';
-import ListScripts from './ListScripts';
-
 const styles = {
   container: {
     textAlign: 'center',
+    paddingTop: 200,
   },
-  listContainer: {
-    width: '200px'
-  }
 };
 
 const muiTheme = getMuiTheme({
@@ -28,7 +23,7 @@ const muiTheme = getMuiTheme({
   },
 });
 
-class App extends Component {
+class Main extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -64,12 +59,25 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div style={styles.container}>
-          <AppBar />
-          <ListScripts />
+          <Dialog
+            open={this.state.open}
+            title="Super Secret Password"
+            actions={standardActions}
+            onRequestClose={this.handleRequestClose}
+            >
+            1-2-3-4-5
+          </Dialog>
+          <h1>Material-UI</h1>
+          <h2>example project</h2>
+          <RaisedButton
+            label="Super Secret Password"
+            secondary={true}
+            onTouchTap={this.handleTouchTap}
+            />
         </div>
       </MuiThemeProvider>
     );
   }
 }
 
-export default App;
+export default Main;
